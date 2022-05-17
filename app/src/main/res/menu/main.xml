@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_bookmark"
+        android:icon="@drawable/vuesax_bold_notification"
+        android:title="@string/notifications"
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction" />
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_map_search"
+        android:title="@string/search"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_extra_settings"
+        android:icon="@drawable/menu_3"
+        android:title="@string/action_settings"
+        app:showAsAction="always" />
+</menu>
