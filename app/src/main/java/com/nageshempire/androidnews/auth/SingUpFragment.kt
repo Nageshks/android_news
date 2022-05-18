@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.nageshempire.androidnews.R
 import com.nageshempire.androidnews.databinding.FragmentSingUpBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
+@AndroidEntryPoint
 class SingUpFragment : Fragment() {
 
     private var _binding: FragmentSingUpBinding? = null

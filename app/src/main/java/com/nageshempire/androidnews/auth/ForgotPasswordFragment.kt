@@ -9,10 +9,12 @@ import androidx.navigation.fragment.findNavController
 import com.nageshempire.androidnews.R
 import com.nageshempire.androidnews.databinding.FragmentForgotPasswordBinding
 import com.nageshempire.androidnews.databinding.FragmentLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
+@AndroidEntryPoint
 class ForgotPasswordFragment : Fragment() {
 
     private var _binding: FragmentForgotPasswordBinding? = null

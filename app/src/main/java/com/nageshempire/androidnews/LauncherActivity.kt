@@ -13,12 +13,14 @@ import androidx.navigation.findNavController
 import com.nageshempire.androidnews.auth.AuthActivity
 import com.nageshempire.androidnews.databinding.ActivityLauncherBinding
 import com.nageshempire.androidnews.util.view.enableFullScreen
+import dagger.hilt.android.AndroidEntryPoint
 import java.lang.Compiler.enable
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
+@AndroidEntryPoint
 class LauncherActivity : AppCompatActivity() {
 
     private val handler = Handler(Looper.myLooper()!!)

@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.nageshempire.androidnews.databinding.ActivityAuthBinding
 import com.nageshempire.androidnews.util.view.enableFullScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AuthActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAuthBinding
