@@ -1,5 +1,5 @@
 <resources>
-    <style name="EditTextStyle" parent="">
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
         <item name="android:background">@drawable/rounded_edittext</item>
         <item name="android:padding">10dp</item>
     </style>
