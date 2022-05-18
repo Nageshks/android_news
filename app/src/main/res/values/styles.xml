@@ -1,2 +1,14 @@
 <resources>
+    <style name="EditTextStyle" parent="">
+        <item name="android:background">@drawable/rounded_edittext</item>
+        <item name="android:padding">10dp</item>
+    </style>
+    <style name="ButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="textAllCaps">false</item>
+        <item name="shapeAppearanceOverlay">@style/RoundedButtonShapeAppearance</item>
+    </style>
+    <style name="RoundedButtonShapeAppearance">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
 </resources>

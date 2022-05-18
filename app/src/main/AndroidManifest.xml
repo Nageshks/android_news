@@ -14,6 +14,11 @@
         android:theme="@style/Theme.AndroidNews"
         tools:targetApi="31">
         <activity
+            android:name=".auth.AuthActivity"
+            android:exported="false"
+            android:label="@string/title_activity_auth"
+            android:theme="@style/Theme.AndroidNews.NoActionBar" />
+        <activity
             android:name=".LauncherActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
@@ -28,7 +33,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AndroidNews.NoActionBar"/>
+            android:theme="@style/Theme.AndroidNews.NoActionBar" />
     </application>
 
 </manifest>
