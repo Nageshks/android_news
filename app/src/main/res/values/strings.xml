@@ -58,6 +58,11 @@
     <string name="sign_out">Sign out</string>
     <string name="notifications">Notifications</string>
     <string name="search">Search</string>
-
+    <string name="article">Article</string>
+    <string name="articles">Articles</string>
+    <string name="live">Live</string>
+    <string name="title_activity_launcher">LauncherActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>
