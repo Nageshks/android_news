@@ -26,11 +26,11 @@
         android:layout_gravity="bottom"
         app:itemTextColor="@color/brand_red"
         app:itemTextAppearanceActive="@style/TextAppearance.AppCompat.Body2"
+        app:elevation="0dp"
+        app:labelVisibilityMode="labeled"
         app:itemIconTint="@color/brand_red"
         app:menu="@menu/main_bottom_navigation"
-        app:labelVisibilityMode="labeled"
-        style="@style/Widget.MaterialComponents.BottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

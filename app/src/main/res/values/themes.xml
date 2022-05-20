@@ -11,6 +11,7 @@
         <item name="materialDrawerStyle">@style/MaterialDrawerStyle</item>
         <item name="materialDrawerHeaderStyle">@style/Widget.MaterialDrawerHeaderStyle</item>
         <item name="colorOutline">@color/grey_dark</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
     </style>
 
     <style name="Theme.AndroidNews" parent="BaseThem" />
