@@ -1,19 +1,19 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.AndroidNews" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
+<resources>
+
+    <style name="BaseThem" parent="Theme.Material3.DayNight">
         <item name="colorPrimary">@color/brand_red</item>
-        <item name="colorPrimaryVariant">@color/brand_red</item>
         <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/brand_green</item>
-        <item name="colorSecondaryVariant">@color/brand_green</item>
         <item name="colorOnSecondary">@color/white</item>
-        <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <item name="materialButtonStyle">@style/ButtonStyle</item>
         <item name="editTextStyle">@style/EditTextStyle</item>
+        <item name="materialDrawerStyle">@style/MaterialDrawerStyle</item>
+        <item name="materialDrawerHeaderStyle">@style/Widget.MaterialDrawerHeaderStyle</item>
+        <item name="colorOutline">@color/grey_dark</item>
     </style>
+
+    <style name="Theme.AndroidNews" parent="BaseThem" />
 
     <style name="Theme.AndroidNews.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -26,6 +26,12 @@
 
     <style name="Theme.AndroidNews.Fullscreen" parent="Theme.AndroidNews.NoActionBar">
         <item name="android:windowBackground">@null</item>
+    </style>
+
+    <style name="MaterialDrawerStyle" parent="Widget.MaterialDrawerStyle">
+        <item name="materialDrawerPrimaryText">@color/black</item>
+        <item name="materialDrawerSecondaryText">@color/grey_dark</item>
+        <item name="materialDrawerDividerColor">?attr/colorOutline</item>
     </style>
 
 </resources>

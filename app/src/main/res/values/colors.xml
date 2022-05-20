@@ -14,10 +14,12 @@
     <color name="background_yellow">#fee902</color>
     <color name="background_purple">#835497</color>
     <color name="background_white">#efebe4</color>
-    <color name="divider">#f3f3f3</color>
     <color name="light_blue_600">#FF039BE5</color>
     <color name="light_blue_900">#FF01579B</color>
     <color name="light_blue_A200">#FF40C4FF</color>
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
+    <color name="divider">#EFEFEF</color>
+    <color name="grey">#757575</color>
+    <color name="grey_dark">#616161</color>
 </resources>
