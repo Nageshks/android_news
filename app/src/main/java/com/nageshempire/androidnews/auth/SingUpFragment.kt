@@ -1,44 +1,22 @@
 package com.nageshempire.androidnews.auth
 
 import android.content.Intent
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.nageshempire.androidnews.R
 import com.nageshempire.androidnews.databinding.FragmentSingUpBinding
 import com.nageshempire.androidnews.onboarding.LanguagePreferenceActivity
+import com.nageshempire.androidnews.util.view.BaseDataFragment
 import com.nageshempire.androidnews.util.view.toast
 import dagger.hilt.android.AndroidEntryPoint
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 @AndroidEntryPoint
-class SingUpFragment : Fragment() {
+class SingUpFragment : BaseDataFragment<FragmentSingUpBinding>(
+    R.layout.fragment_sing_up, null, null
+) {
 
-    private var _binding: FragmentSingUpBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-
-        _binding = FragmentSingUpBinding.inflate(inflater, container, false)
-        return binding.root
-
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onLayoutInflated() {
         binding.button.setOnClickListener {
             findNavController().navigate(R.id.action_SignUpFragment_to_ForgotPasswordFragment)
         }
@@ -48,7 +26,6 @@ class SingUpFragment : Fragment() {
         binding.button2.setOnClickListener {
             invalidateCredentialsAndAuthenticate()
         }
-
     }
 
     private fun invalidateCredentialsAndAuthenticate() {
@@ -84,8 +61,4 @@ class SingUpFragment : Fragment() {
             }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
