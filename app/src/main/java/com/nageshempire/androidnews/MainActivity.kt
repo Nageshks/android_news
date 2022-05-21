@@ -1,7 +1,9 @@
 package com.nageshempire.androidnews
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -9,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.firebase.auth.FirebaseAuth
 import com.mikepenz.materialdrawer.holder.ImageHolder
 import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
@@ -17,7 +20,9 @@ import com.mikepenz.materialdrawer.model.interfaces.nameRes
 import com.mikepenz.materialdrawer.util.addItems
 import com.mikepenz.materialdrawer.util.setupWithNavController
 import com.mikepenz.materialdrawer.widget.MaterialDrawerSliderView
+import com.nageshempire.androidnews.auth.AuthActivity
 import com.nageshempire.androidnews.databinding.ActivityMainBinding
+import com.nageshempire.androidnews.util.view.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -87,6 +92,31 @@ class MainActivity : AppCompatActivity() {
             DividerDrawerItem(),
             signOut
         )
+
+        slider.onDrawerItemClickListener = { v, drawerItem, position ->
+            when (drawerItem) {
+                signOut -> {
+                    showConfirmSignOutDialog()
+                    // return false so it will close drawer automatically
+                    false
+                }
+                else -> false
+            }
+        }
+    }
+
+    private fun showConfirmSignOutDialog() {
+        AlertDialog.Builder(this).apply {
+            setTitle("Do you want to sign out ?")
+            setNegativeButton("Cancel") { _, _ -> }
+            setPositiveButton("Yes, Sign out") { _, _ ->
+                FirebaseAuth.getInstance().signOut()
+                toast("Signed out successfully")
+                startActivity(Intent(this@MainActivity, AuthActivity::class.java))
+                finish()
+            }
+            show()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
