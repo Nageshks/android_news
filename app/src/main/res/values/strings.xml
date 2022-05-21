@@ -76,5 +76,6 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="name_invalid">Name Cannot be empty</string>
     <string name="invalid_credentials">invalid credentials</string>
+    <string name="welcome">Welcome</string>
 
 </resources>

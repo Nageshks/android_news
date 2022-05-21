@@ -1,14 +1,16 @@
-package com.nageshempire.androidnews.ui.home
+package com.nageshempire.androidnews.ui.live
 
 import androidx.fragment.app.viewModels
 import com.nageshempire.androidnews.R
-import com.nageshempire.androidnews.databinding.FragmentHomeBinding
+import com.nageshempire.androidnews.databinding.FragmentLiveBinding
 import com.nageshempire.androidnews.util.view.BaseDataFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-class HomeFragment : BaseDataFragment<FragmentHomeBinding>(
-    R.layout.fragment_home, null, null
+@AndroidEntryPoint
+class LiveFragment : BaseDataFragment<FragmentLiveBinding>(
+    R.layout.fragment_live, null, null
 ) {
-    private val viewModel by viewModels<HomeViewModel>()
+    private val viewModel by viewModels<LiveViewModel>()
     override fun onLayoutInflated() {
 
     }

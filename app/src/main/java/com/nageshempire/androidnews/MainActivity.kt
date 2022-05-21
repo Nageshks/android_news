@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.mikepenz.materialdrawer.holder.ImageHolder
 import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
@@ -33,15 +34,16 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_home, R.id.nav_articles, R.id.nav_my_city, R.id.nav_live
             ), binding.drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         setupDrawer(binding.navView, navController)
+        binding.appBarMain.mainBottomBar.setupWithNavController(navController)
     }
 
     private fun setupDrawer(slider: MaterialDrawerSliderView, navController: NavController) {
-        slider.setupWithNavController(navController, null)
+        slider.setupWithNavController(navController, null, null)
         slider.headerView = layoutInflater.inflate(R.layout.nav_header_main, null)
         val signOut = SecondaryDrawerItem().apply {
             nameRes = R.string.sign_out
