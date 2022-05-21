@@ -5,14 +5,33 @@
 
     </data>
 
-    <FrameLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".onboarding.LanguagePreferenceActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.AndroidNews.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:layout_scrollFlags="enterAlways"
+                app:popupTheme="@style/Theme.AndroidNews.PopupOverlay"
+                app:title="@string/language_preference" />
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <com.airbnb.epoxy.EpoxyRecyclerView
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
             android:id="@+id/list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
         <com.google.android.material.button.MaterialButton
             android:backgroundTint="@color/brand_green"
@@ -21,8 +40,7 @@
             android:layout_gravity="bottom|center"
             android:text="Continue"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
-    </FrameLayout>
-
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

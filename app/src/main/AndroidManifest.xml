@@ -19,6 +19,7 @@
         <activity
             android:name=".onboarding.LanguagePreferenceActivity"
             android:label="@string/language_preference"
+            android:theme="@style/Theme.AndroidNews.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".auth.AuthActivity"

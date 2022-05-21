@@ -19,6 +19,7 @@ class LanguagePreferenceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLanguagePreferenceBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
         val languages = resources.getStringArray(R.array.languages).mapIndexed { i, it ->
             if (i == 0) Language(it, true) else Language(it, false)
         }
