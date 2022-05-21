@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
-import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.nageshempire.androidnews.R
 import com.nageshempire.androidnews.databinding.FragmentLoginBinding
 import com.nageshempire.androidnews.onboarding.LanguagePreferenceActivity
@@ -67,6 +66,7 @@ class LoginFragment : Fragment() {
                 if (it.isSuccessful) {
                     requireContext().toast("Login Successful")
                     startActivity(Intent(requireActivity(), LanguagePreferenceActivity::class.java))
+                    requireActivity().finish()
                 }
             }.addOnFailureListener {
                 if(it is FirebaseAuthInvalidUserException){
