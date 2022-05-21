@@ -3,6 +3,7 @@ package com.nageshempire.androidnews
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -22,6 +23,7 @@ import com.mikepenz.materialdrawer.util.setupWithNavController
 import com.mikepenz.materialdrawer.widget.MaterialDrawerSliderView
 import com.nageshempire.androidnews.auth.AuthActivity
 import com.nageshempire.androidnews.databinding.ActivityMainBinding
+import com.nageshempire.androidnews.databinding.NavHeaderMainBinding
 import com.nageshempire.androidnews.util.view.toast
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,12 +32,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private val viewModel by viewModels<MainViewModel>()
+    lateinit var profile: NavHeaderMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.appBarMain.toolbar)
+
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -43,13 +48,23 @@ class MainActivity : AppCompatActivity() {
             ), binding.drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
+        profile = NavHeaderMainBinding.inflate(layoutInflater)
         setupDrawer(binding.navView, navController)
         binding.appBarMain.mainBottomBar.setupWithNavController(navController)
+        viewModel.user.observe(this) { user ->
+            if (user == null) {
+                startActivity(Intent(this@MainActivity, AuthActivity::class.java))
+                finish()
+            } else {
+                profile.userTitle.text = user.displayName
+                supportActionBar?.subtitle = user.displayName
+            }
+        }
     }
 
     private fun setupDrawer(slider: MaterialDrawerSliderView, navController: NavController) {
         slider.setupWithNavController(navController, null, null)
-        slider.headerView = layoutInflater.inflate(R.layout.nav_header_main, null)
+        slider.headerView = profile.root
         val signOut = SecondaryDrawerItem().apply {
             nameRes = R.string.sign_out
             icon = ImageHolder(R.drawable.ic_awesome_sign_out_alt)

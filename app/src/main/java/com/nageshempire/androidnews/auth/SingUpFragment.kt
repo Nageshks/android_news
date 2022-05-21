@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.nageshempire.androidnews.R
 import com.nageshempire.androidnews.databinding.FragmentSingUpBinding
 import com.nageshempire.androidnews.onboarding.LanguagePreferenceActivity
+import com.nageshempire.androidnews.util.toResourceUri
 import com.nageshempire.androidnews.util.view.BaseDataFragment
 import com.nageshempire.androidnews.util.view.toast
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,25 +42,37 @@ class SingUpFragment : BaseDataFragment<FragmentSingUpBinding>(
         if (email.isNullOrEmpty() or !password.contentEquals(password2)) {
             requireContext().toast(getString(R.string.invalid_credentials))
         } else {
-            authenticateWithEmail(email.toString(), password.toString())
+            registerUser(name.toString(), email.toString(), password.toString())
         }
     }
 
-    private fun authenticateWithEmail(email: String, password: String) {
+    private fun registerUser(name: String, email: String, password: String) {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    requireContext().toast("Signup Successful")
-                    startActivity(Intent(requireActivity(), LanguagePreferenceActivity::class.java))
+                    setUserName(name)
                 }
             }.addOnFailureListener {
-                if(it is FirebaseAuthUserCollisionException){
+                if (it is FirebaseAuthUserCollisionException) {
                     requireContext().toast("Already have an account login please to continue")
                     findNavController().navigate(R.id.action_SignUpFragment_to_LoginFragment)
-                }else{
+                } else {
                     it.localizedMessage?.let { it1 -> requireContext().toast(it1) }
                 }
             }
+    }
+
+    private fun setUserName(userName: String) {
+        FirebaseAuth.getInstance().currentUser?.let { user ->
+            val profileUpdates = UserProfileChangeRequest.Builder()
+                .setDisplayName(userName)
+                .setPhotoUri(R.drawable.avatar.toResourceUri())
+                .build()
+            user.updateProfile(profileUpdates).addOnSuccessListener {
+                requireContext().toast("Signup Successful")
+                startActivity(Intent(requireActivity(), LanguagePreferenceActivity::class.java))
+            }
+        }
     }
 
 }
