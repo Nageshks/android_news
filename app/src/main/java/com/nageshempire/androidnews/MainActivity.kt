@@ -24,6 +24,9 @@ import com.mikepenz.materialdrawer.widget.MaterialDrawerSliderView
 import com.nageshempire.androidnews.auth.AuthActivity
 import com.nageshempire.androidnews.databinding.ActivityMainBinding
 import com.nageshempire.androidnews.databinding.NavHeaderMainBinding
+import com.nageshempire.androidnews.onboarding.LanguagePreferenceActivity
+import com.nageshempire.androidnews.ui.privacypolicy.PrivacyActivity
+import com.nageshempire.androidnews.ui.termsandconditions.TermsActivity
 import com.nageshempire.androidnews.util.view.toast
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -70,6 +73,21 @@ class MainActivity : AppCompatActivity() {
             icon = ImageHolder(R.drawable.ic_awesome_sign_out_alt)
             isSelectable = false
         }
+        val privacyPolicy = SecondaryDrawerItem().apply {
+            nameRes = R.string.privacy_policy
+            icon = ImageHolder(R.drawable.privacy_policy)
+            isSelectable = false
+        }
+        val termsAndCondition = SecondaryDrawerItem().apply {
+            nameRes = R.string.terms_and_conditions
+            icon = ImageHolder(R.drawable.terms_and_conditions)
+            isSelectable = false
+        }
+        val languagePreferences = SecondaryDrawerItem().apply {
+            nameRes = R.string.language_preference
+            icon = ImageHolder(R.drawable.language)
+            isSelectable = false
+        }
         slider.addItems(
             PrimaryDrawerItem().apply {
                 nameRes = R.string.personalizations
@@ -85,25 +103,13 @@ class MainActivity : AppCompatActivity() {
                 icon = ImageHolder(R.drawable.vuesax_bold_element_3)
                 isSelectable = false
             },
-            SecondaryDrawerItem().apply {
-                nameRes = R.string.language_preference
-                icon = ImageHolder(R.drawable.language)
-                isSelectable = false
-            },
+            languagePreferences,
             PrimaryDrawerItem().apply {
                 nameRes = R.string.others
                 isSelectable = false
             },
-            SecondaryDrawerItem().apply {
-                nameRes = R.string.privacy_policy
-                icon = ImageHolder(R.drawable.privacy_policy)
-                isSelectable = false
-            },
-            SecondaryDrawerItem().apply {
-                nameRes = R.string.terms_and_conditions
-                icon = ImageHolder(R.drawable.terms_and_conditions)
-                isSelectable = false
-            },
+            privacyPolicy,
+            termsAndCondition,
             DividerDrawerItem(),
             signOut
         )
@@ -113,6 +119,18 @@ class MainActivity : AppCompatActivity() {
                 signOut -> {
                     showConfirmSignOutDialog()
                     // return false so it will close drawer automatically
+                    false
+                }
+                privacyPolicy -> {
+                    startActivity(Intent(this@MainActivity, PrivacyActivity::class.java))
+                    false
+                }
+                termsAndCondition -> {
+                    startActivity(Intent(this@MainActivity, TermsActivity::class.java))
+                    false
+                }
+                languagePreferences -> {
+                    startActivity(LanguagePreferenceActivity.getIntent(this@MainActivity, false))
                     false
                 }
                 else -> false

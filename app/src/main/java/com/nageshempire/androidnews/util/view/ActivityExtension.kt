@@ -4,6 +4,8 @@ import android.app.Activity
 import android.os.Build
 import android.view.View
 import android.view.WindowInsets
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 
 fun Activity.enableFullScreen() {
     if (Build.VERSION.SDK_INT >= 30) {
@@ -17,4 +19,10 @@ fun Activity.enableFullScreen() {
                     View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or
                     View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
     }
+}
+
+fun AppCompatActivity.setToolbar(toolbar: Toolbar) {
+    setSupportActionBar(toolbar)
+    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    toolbar.setNavigationOnClickListener { onBackPressed() }
 }

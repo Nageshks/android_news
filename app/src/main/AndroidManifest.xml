@@ -22,6 +22,14 @@
             android:theme="@style/Theme.AndroidNews.NoActionBar"
             android:exported="false" />
         <activity
+            android:name=".ui.privacypolicy.PrivacyActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AndroidNews.NoActionBar" />
+        <activity
+            android:name=".ui.termsandconditions.TermsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AndroidNews.NoActionBar" />
+        <activity
             android:name=".auth.AuthActivity"
             android:exported="false"
             android:label="@string/title_activity_auth"
