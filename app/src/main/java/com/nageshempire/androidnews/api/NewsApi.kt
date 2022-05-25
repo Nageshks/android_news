@@ -14,7 +14,7 @@ interface NewsApi {
     }
 
     @Headers("X-Api-Key: $API_KEY")
-    @GET("top-headlines?country=india&pageSize=100")
+    @GET("top-headlines?country=in")
     suspend fun getBreakingNews(): NewsResponse
 
     @Headers("X-Api-Key: $API_KEY")

@@ -9,7 +9,7 @@ object BindingAdapter {
 
     @JvmStatic
     @BindingAdapter("loadImage", "placeHolder", requireAll = false)
-    fun loadImage(view: ImageView, address: String, placeholder: Drawable?) {
+    fun loadImage(view: ImageView, address: String?, placeholder: Drawable?) {
         var glide = Glide.with(view.context).load(address)
         if (placeholder != null) glide = glide.placeholder(placeholder)
         glide.into(view)
