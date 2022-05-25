@@ -87,6 +87,8 @@ dependencies {
     def materialDrawer= '9.0.0'
     implementation "com.mikepenz:materialdrawer:${materialDrawer}"
     implementation "com.mikepenz:materialdrawer-nav:${materialDrawer}"
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.4.0'
+
 }
 
 project.android.buildTypes.all { buildType ->
